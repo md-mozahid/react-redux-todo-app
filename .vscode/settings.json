@@ -20,6 +20,7 @@
     "source.fixAll.tslint": true,
     "source.organizeImports": true
   },
+  "cSpell.words": ["TODOS"]
   // "javascript.validate.enable": false,
   // "typescript.validate.enable": false
 }
