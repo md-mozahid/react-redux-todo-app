@@ -8,7 +8,10 @@ import {
 } from './ActionTypes'
 import initialState from './InitialState'
 
-let nextId = 2
+const nextTodoId = (todos) => {
+  const maxId = todos.reduce((maxId, todo) => Math.max(todo.id, maxId), -1)
+  return maxId + 1
+}
 
 const TodoReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -16,14 +19,14 @@ const TodoReducer = (state = initialState, action) => {
       return [
         ...state,
         {
-          id: nextId++,
+          id: nextTodoId(state),
           title: action.payload,
           completed: false,
         },
       ]
 
     case DELETE_TODOS:
-      return state.todos.filter((todo) => todo.id !== action.payload)
+      return state.filter((todo) => todo.id !== action.payload)
 
     case TOGGLED:
       return state.map((todo) => {
@@ -55,6 +58,7 @@ const TodoReducer = (state = initialState, action) => {
           completed: true,
         }
       })
+      
     case CLEAR_COMPLETED:
       return state.filter((todo) => !todo.completed)
 
