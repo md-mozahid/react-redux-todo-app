@@ -6,12 +6,12 @@ import imgNotes from '../assets/images/notes.png'
 import { addTodos } from '../redux/todos/Actions'
 
 const Header = () => {
-  const [todos, setTodos] = useState('')
+  const [title, setTitle] = useState('')
   const dispatch = useDispatch()
 
   const handleChange = (e) => {
     e.preventDefault()
-    setTodos((prev) => {
+    setTitle((prev) => {
       return {
         ...prev,
         [e.target.name]: e.target.value,
@@ -20,7 +20,7 @@ const Header = () => {
   }
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(addTodos(todos))
+    dispatch(addTodos(title))
   }
   return (
     <>

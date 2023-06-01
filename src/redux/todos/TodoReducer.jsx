@@ -1,0 +1,65 @@
+import {
+  ADD_TODOS,
+  ALL_COMPLETED,
+  CLEAR_COMPLETED,
+  COLOR_SELECTED,
+  DELETE_TODOS,
+  TOGGLED,
+} from './ActionTypes'
+import initialState from './InitialState'
+
+let nextId = 2
+
+const TodoReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case ADD_TODOS:
+      return [
+        ...state,
+        {
+          id: nextId++,
+          title: action.payload,
+          completed: false,
+        },
+      ]
+
+    case DELETE_TODOS:
+      return state.todos.filter((todo) => todo.id !== action.payload)
+
+    case TOGGLED:
+      return state.map((todo) => {
+        if (todo.id !== action.payload) {
+          return todo
+        }
+        return {
+          ...todo,
+          completed: !todo.completed,
+        }
+      })
+
+    case COLOR_SELECTED:
+      const { todoId, color } = action.payload
+      return state.map((todo) => {
+        if (todo.id !== todoId) {
+          return todo
+        }
+        return {
+          ...todo,
+          color: color,
+        }
+      })
+
+    case ALL_COMPLETED:
+      return state.map((todo) => {
+        return {
+          ...todo,
+          completed: true,
+        }
+      })
+    case CLEAR_COMPLETED:
+      return state.filter((todo) => !todo.completed)
+
+    default:
+      return state
+  }
+}
+export default TodoReducer

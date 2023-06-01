@@ -1,2 +1,6 @@
-export const ADD_TODOS = 'todos/add'
-export const DELETE_TODOS = 'todos/delete'
+export const ADD_TODOS = 'todos/added'
+export const DELETE_TODOS = 'todos/deleted'
+export const TOGGLED = 'todos/toggled'
+export const COLOR_SELECTED = 'todos/colorSelected'
+export const ALL_COMPLETED = 'todos/allCompleted'
+export const CLEAR_COMPLETED = 'todos/clearCompleted'
