@@ -8,13 +8,14 @@ const FilterReducer = (state = initialState, action) => {
         ...state,
         status: action.payload,
       }
+
     case COLOR_CHANGE:
       const { color, changeType } = action.payload
       switch (changeType) {
         case 'added':
           return {
             ...state,
-            colors: [...state.colors.color],
+            colors: [...state.colors, color],
           }
         case 'removed':
           return {
