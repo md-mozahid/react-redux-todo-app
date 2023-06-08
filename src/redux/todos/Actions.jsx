@@ -4,9 +4,16 @@ import {
   CLEAR_COMPLETED,
   COLOR_SELECTED,
   DELETE_TODOS,
+  LOADED,
   TOGGLED,
 } from './ActionTypes'
 
+export const loaded = (todos) => {
+  return {
+    type: LOADED,
+    payload: todos,
+  }
+}
 export const addTodos = (todoTitle) => {
   return {
     type: ADD_TODOS,
