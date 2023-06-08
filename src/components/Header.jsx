@@ -3,7 +3,8 @@ import { useDispatch } from 'react-redux'
 import imgTick from '../assets/images/double-tick.png'
 import imgNotes from '../assets/images/notes.png'
 import imgPlus from '../assets/images/plus.png'
-import { addTodos, allCompleted, clearCompleted } from '../redux/todos/Actions'
+import { allCompleted, clearCompleted } from '../redux/todos/Actions'
+import addTodo from '../redux/todos/thunk/addTodo'
 
 const Header = () => {
   const [input, setInput] = useState('')
@@ -15,7 +16,7 @@ const Header = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    dispatch(addTodos(input))
+    dispatch(addTodo(input)) // redux thunk call him self
     setInput('')
   }
 
