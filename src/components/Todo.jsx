@@ -38,7 +38,7 @@ const Todo = ({ todo }) => {
         )}
       </div>
 
-      <p className="select-none flex-1 line-through">{title}</p>
+      <p className={`select-none flex-1 ${completed && 'line-through'}`}>{title}</p>
 
       <div
         className={`flex-shrink-0 h-4 w-4 rounded-full border-2 ml-auto cursor-pointer border-green-500 hover:bg-green-500 ${
